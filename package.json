@@ -1,0 +1,27 @@
+{
+  "name": "node-anonize-relic",
+  "version": "0.0.1",
+  "description": "Node bindings to the anonize, using the RELIC toolkit.",
+  "scripts": {
+    "install": "node preflight.js && node-gyp configure build",
+    "clean": "rm -rf anonize2/relic-build && node-gyp clean"
+  },
+  "gypfile": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brave/node-anonize-relic.git"
+  },
+  "author": "Brave Developers <support@brave.com>",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/brave/node-anonize-relic/issues"
+  },
+  "homepage": "https://github.com/brave/node-anonize-relic",
+  "dependencies": {
+    "underscore": "1.8.3"
+  },
+  "engines": {
+    "node": "5.6.0",
+    "npm": "3.6.0"
+  }
+}
