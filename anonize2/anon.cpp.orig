@@ -233,9 +233,7 @@ public:
 		std::getline(is, userid);	// consume newline from topline
 		std::getline(is, userid);	// read userid entirely
 		int len = userid.length();
-/* test harmful (and not needed)
 		if (len>31) { return 0; }	// fail on long address
- */
 		set_int(id, userid.c_str(), len);
 
 		return ( (is >> sid >> sig.sigma >> sig.r >> sig.s >> b)
@@ -965,7 +963,7 @@ public:
 		add(r1, r1, r2);
 
         // 1 = beta * C^-z1 * H(vid)^z4 
-        G1 Hvid, r3, l3;
+        G1 Hvid, r3, l3, t3;
         H1(vidstr, Hvid);
         
         mult(r3, Hvid, z4);
@@ -1049,7 +1047,7 @@ public:
 		normalize(r5,r5);
 
 		// gamma2 F^c = g^z3 hg^z8 u^{z13} t^{z12}
-		G1 r7;
+		G1 r7, t7;
 		mult(r7, ravk.gg, z3);
 		add(r7,r7,t5);	// add tt^z12 since it is precomputed
 		mult(t5, vavk.gg, z8);

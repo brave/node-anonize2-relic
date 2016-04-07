@@ -57,7 +57,7 @@ Surveyor.prototype.initialize = function (registrarVK) {
   if (this.parameters) throw new Error('invalid initialization')
 
   this.parameters = addon.createSurvey()
-  this.parameters.surveyorId = this.parameters.surveyId
+  this.parameters.surveyorId |= this.parameters.surveyId
   delete(this.parameters.surveyId)
   this.parameters.registrarVK = registrarVK
 
@@ -131,6 +131,7 @@ Credential.prototype.finalize = function (response) {
 Credential.prototype.submit = function (survey, message) {
   if (!this.parameters.masterUserToken) throw new Error('masterUserToken missing for credential')
 
+  if (typeof message === 'undefined') message = {}
   if (typeof message !== 'string') message = JSON.stringify(message)
 
   return addon.submitMessage(message, this.parameters.masterUserToken, this.parameters.registrarVK,
