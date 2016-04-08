@@ -1,4 +1,4 @@
-# node-anonize-relic
+# node-anonize2-relic
 Node bindings to the [anonize2](https://gitlab.com/abhvious/anonize2) library,
 using the [RELIC toolkit](https://github.com/relic-toolkit/relic).
 
