@@ -42,10 +42,10 @@
 
 
           "ldflags": [
-            "-L./src/relic-build/lib"
+            "-L./anonize2/relic-build/lib"
           ],
           "libraries": [
-            "../src/relic-build/lib/librelic.so"
+            "../anonize2/relic-build/lib/librelic.so"
           ]
         }],
 
