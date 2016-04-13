@@ -1217,11 +1217,11 @@ const char* submitMessage(const char* msg, const char* cred, const char* ravk_st
 	}
 
 	// Parse vid-sig if necessary
-	bool clause = false;
+/*	bool clause = false; */
 	SIG sigvid;
 	Big vid;
 	if (uidsig!=NULL && vavk_str!=NULL) {
-		clause = true;
+/*		clause = true; */
 		istringstream in(vidstr);
 
 		if (!vavk.read(vavk_str) || !sigvid.read(uidsig) || !(in >> vid) ||
@@ -1247,7 +1247,7 @@ const char* submitMessage(const char* msg, const char* cred, const char* ravk_st
 int verifyMessage(const char* proof, const char* ravk_str, const char* vidstr, const char* vavk_str, survey_response* sr) {
 
 	ANONVK ravk, vavk;
-	bool clause = false;
+/*	bool clause = false; */
     
 	if (!proof || !ravk_str || !sr || !ravk.read(ravk_str)) {
 		log("Invalid proof inputs","");
@@ -1256,7 +1256,7 @@ int verifyMessage(const char* proof, const char* ravk_str, const char* vidstr, c
 	if (vidstr && !vavk.read(vavk_str)) {
 		log("Invalid vavk inputs",vidstr);
 		return 0;		
-	} else { clause = true; }
+	} else { /* clause = true; */ }
     
 	sr->msg = sr->token = NULL;
 
