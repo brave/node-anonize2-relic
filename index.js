@@ -57,7 +57,7 @@ Surveyor.prototype.initialize = function (registrarVK) {
   if (this.parameters) throw new Error('invalid initialization')
 
   this.parameters = addon.createSurvey()
-  this.parameters.surveyorId |= this.parameters.surveyId
+  this.parameters.surveyorId = this.parameters.surveyorId || this.parameters.surveyId
   delete(this.parameters.surveyId)
   this.parameters.registrarVK = registrarVK
 
