@@ -163,12 +163,21 @@ var uId = function (s) {
   if (typeof s !== 'string') return s
 
   var u = s.split('-').join('')
+
+/* anonize2 limit is 31 octets
+
   return ((u.length !== 32) || (u.substr(12, 1) !== '4')) ? s : u
+
+ */
+
+  if ((u.length !== 32) || (u.substr(12, 1) !== '4')) return s
+  return u.substr(0, 12) + u.substr(13, 19)
 }
 
 
 module.exports =
   { version: addon.version,
+    uId: uId,
     Registrar: Registrar,
     Surveyor: Surveyor,
     Credential: Credential

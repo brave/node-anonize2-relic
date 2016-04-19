@@ -233,9 +233,7 @@ public:
 		std::getline(is, userid);	// consume newline from topline
 		std::getline(is, userid);	// read userid entirely
 		int len = userid.length();
-/* test harmful (and not needed)
 		if (len>31) { return 0; }	// fail on long address
- */
 		set_int(id, userid.c_str(), len);
 
 		return ( (is >> sid >> sig.sigma >> sig.r >> sig.s >> b)
