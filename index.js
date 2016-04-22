@@ -164,14 +164,10 @@ var uId = function (s) {
 
   var u = s.split('-').join('')
 
-/* anonize2 limit is 31 octets
-
-  return ((u.length !== 32) || (u.substr(12, 1) !== '4')) ? s : u
-
- */
-
+// NB: anonize2 limit is 31 octets, ledger expects a v4 UUID
   if ((u.length !== 32) || (u.substr(12, 1) !== '4')) return s
-  return u.substr(0, 12) + u.substr(13, 19)
+
+  return (u.substr(0, 12) + u.substr(13, 19)).toLowerCase()
 }
 
 
