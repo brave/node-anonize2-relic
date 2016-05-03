@@ -30,13 +30,6 @@ which is then used by as an add-on for node.js,
 it is believed that this package fully complies with the RELIC toolkit's licensing requirements.
 
 ## You must have CMake installed
-To build this package properly,
-you **must** have [CMake](https://cmake.org/) installed along with _make_.
-The `preflight.js` script invoked during `npm install` will invoke CMake as appropriate,
-and then run make.
-This takes place before the usual `node-gyp` magic.
+The easiest way to do this is
 
-The maintainers understand that this setup breaks a lot of rules for portable packages;
-if you have a better way,
-please let us know.
-Until then: [_mea culpa, mea culpa, mea máxima culpa_](https://en.wikipedia.org/wiki/Mea_culpa).
+        npm install -g install-cmake
