@@ -30,6 +30,6 @@ which is then used by as an add-on for node.js,
 it is believed that this package fully complies with the RELIC toolkit's licensing requirements.
 
 ## You must have CMake installed
-The easiest way to do this is
+The easiest way to do this is:
 
         npm install -g install-cmake
