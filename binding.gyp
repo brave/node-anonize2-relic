@@ -37,7 +37,8 @@
             "-fomit-frame-pointer",
             "-msse2",
             "-mfpmath=sse",
-            "-march=native"
+            "-march=native",
+	    "-fPIC"
           ],
 
 
@@ -45,7 +46,7 @@
             "-L./anonize2/relic-build/lib"
           ],
           "libraries": [
-            "../anonize2/relic-build/lib/librelic.so"
+            "../anonize2/relic-build/lib/librelic_s.a"
           ]
         }],
 
