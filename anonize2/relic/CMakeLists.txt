@@ -357,9 +357,9 @@ else(PROFL)
 	set(PFLAGS "")
 endif(PROFL)
 
-if(TRACE)
-	set(DFLAGS "${DFLAGS} -fPIC -finstrument-functions")
-endif(TRACE)
+if(OPSYS STREQUAL LINUX)
+	 set(DFLAGS "${DFLAGS} -fPIC -finstrument-functions")
+endif(OPSYS STREQUAL LINUX)
 
 if(ARITH STREQUAL "gmp" OR ARITH STREQUAL "gmp-sec")
 	include(cmake/gmp.cmake)
