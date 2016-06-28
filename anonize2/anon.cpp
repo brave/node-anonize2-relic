@@ -73,7 +73,6 @@ public:
 	G2 ww;
 
 	int read(const char* txt) {
-log(">>> ANONVK.read\n", txt);
 		string s(txt);
 		istringstream in(s);
 		string t,b;
@@ -230,7 +229,6 @@ public:
 	}
 
 	int read(const char* str) {
-log(">>> Cred.read\n", str);
 		istringstream in(str);
 		return read(in);
 	}
