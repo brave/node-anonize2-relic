@@ -37,8 +37,9 @@ void rand(char* buf, int sz);
 
 using namespace std;
 
-void log(const char *msg, const char* detail) 	{ printf("%s %s\n",msg, detail); }
-void log(const char *msg, string str) 			{ printf("%s %s\n",msg, str.c_str());	 }
+void log(const char *msg, const int detail) 	{ fprintf(stderr, "%s %d\n",msg, detail); }
+void log(const char *msg, const char* detail) 	{ fprintf(stderr, "%s %s\n",msg, detail); }
+void log(const char *msg, string str) 		{ fprintf(stderr, "%s %s\n",msg, str.c_str()); }
 
 // The Okamoto signature scheme is
 //     pk: w=g^x   sk: x
@@ -61,7 +62,7 @@ public:
 	int read(const char* str) {
 		istringstream v(str);
 		if (v >> sigma >> r >> s) { return 1; }
-		fprintf(stderr, "Error reading signature.\n");
+		log("SIG.read:", "failed");
 		return 0;
 	}
 };
@@ -72,12 +73,14 @@ public:
 	G2 ww;
 
 	int read(const char* txt) {
+log(">>> ANONVK.read\n", txt);
 		string s(txt);
 		istringstream in(s);
 		string t,b;
 		int a = ( (in >> t >> gg >> tt >> uu >> vv >> ww >> b) 
 				&& t == "==========ANONLOGIN_VK_BEG==========" 
 				&& b == "===========ANONLOGIN_VK_END==========" );
+		if (!a) log("ANONVK.read:", "failed");
 		return a;
 	}
 
@@ -142,7 +145,10 @@ public:
 
 	int readFromFile(string filename) {
 		ifstream is(filename);
-		if (!is.is_open()) { return 0; }
+		if (!is.is_open()) {
+			log("ANONSK.readFromFile failed:", filename);
+			return 0;
+		}
 		return readkey(is);
 	}
 
@@ -151,6 +157,7 @@ public:
 		int a = ( (is >> t >>  gg >> tt >> uu >> vv >> ww>> xx >> b) 
 				&& t == "==========ANONLOGIN_SK_BEG==========" 
 				&& b == "===========ANONLOGIN_SK_END==========" );
+		if (!a) log("ANONSK.readkey:", "failed");
 		return a;
 	}
 
@@ -223,17 +230,24 @@ public:
 	}
 
 	int read(const char* str) {
+log(">>> Cred.read\n", str);
 		istringstream in(str);
 		return read(in);
 	}
 
 	int read(istream& is) {
 		string t,b;
-		if (!(is >> t)) { return 0; }
+		if (!(is >> t)) { 
+			log("Cred.read:", "failed");
+                	return 0;
+                }
 		std::getline(is, userid);	// consume newline from topline
 		std::getline(is, userid);	// read userid entirely
 		int len = userid.length();
-		if (len>31) { return 0; }	// fail on long address
+		if (len>31) {			// fail on long address
+			log("Cred.read: len", len);
+			return 0;
+		}
 		set_int(id, userid.c_str(), len);
 
 		return ( (is >> sid >> sig.sigma >> sig.r >> sig.s >> b)
