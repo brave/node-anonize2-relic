@@ -74,6 +74,7 @@ Surveyor.prototype.publicInfo = function () {
 
 Surveyor.prototype.sign = function (userId) {
   userId = uId(userId)
+  if (userId.length > 31) throw new Error('invalid userId: ' + userId)
 
   return addon.extendSurvey(this.parameters.surveyorId, this.parameters.surveyVK, this.parameters.surveySK, userId)
 }
@@ -93,6 +94,7 @@ var Credential = function (userId, registrarVK) {
 
   if (!userId) throw new Error('missing parameters')
   userId = uId(userId)
+  if (userId.length > 31) throw new Error('invalid userId: ' + userId)
 
   if ((typeof userId === 'string') && (typeof registrarVK === 'string')) {
     this.parameters = { userId: userId, registrarVK: registrarVK }
