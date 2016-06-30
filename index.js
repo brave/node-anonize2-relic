@@ -93,10 +93,11 @@ var Credential = function (userId, registrarVK) {
   if (!(this instanceof Credential)) return new Credential(userId, registrarVK)
 
   if (!userId) throw new Error('missing parameters')
-  userId = uId(userId)
-  if (userId.length > 31) throw new Error('invalid userId: ' + userId)
 
   if ((typeof userId === 'string') && (typeof registrarVK === 'string')) {
+    userId = uId(userId)
+    if (userId.length > 31) throw new Error('invalid userId: ' + userId)
+
     this.parameters = { userId: userId, registrarVK: registrarVK }
     return
   }
