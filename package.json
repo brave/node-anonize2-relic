@@ -9,14 +9,14 @@
   "gypfile": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/brave/node-anonize-relic.git"
+    "url": "https://github.com/brave/node-anonize2-relic.git"
   },
   "author": "Brave Developers <support@brave.com>",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/brave/node-anonize-relic/issues"
+    "url": "https://github.com/brave/node-anonize2-relic/issues"
   },
-  "homepage": "https://github.com/brave/node-anonize-relic",
+  "homepage": "https://github.com/brave/node-anonize2-relic",
   "dependencies": {
     "underscore": "1.8.3"
   },
