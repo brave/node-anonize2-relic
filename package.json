@@ -1,6 +1,6 @@
 {
   "name": "node-anonize2-relic",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Node bindings to anonize2, using the RELIC toolkit.",
   "scripts": {
     "install": "node preflight.js && node-gyp configure build",
