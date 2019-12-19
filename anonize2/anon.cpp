@@ -1066,7 +1066,7 @@ public:
 		add(r7, r7, t5);
 		mult(t5, ravk.uu, z13);
 		add(r7, r7, t5);
-		normalize(r7,l7);
+		normalize(r7,r7);
 
 		// eta H^c = t^{z13} v^{z14}
 		G1 l6, r6, t6;
@@ -1075,11 +1075,11 @@ public:
 		mult(r6, ravk.tt, z13);
 		mult(t6, ravk.vv, z14);
 		add(r6,r6,t6);
-		normalize(l6,r6);
+		normalize(l6,l6);
 		normalize(r6,r6);
 
 		if (equal(l1,r1) && equal(E1,E1r) && equal(E2,E2r) && equal(l3,r3)
-			&& equal(l4,r4) && equal(l5,r5) && equal(l7,l7) && equal(l6,r6)
+			&& equal(l4,r4) && equal(l5,r5) && equal(l7,r7) && equal(l6,r6)
 			) {
 			return true;
 		} else {
